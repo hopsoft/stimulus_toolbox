@@ -1,0 +1,22 @@
+# For details on connection pooling, see Rails configuration guide
+# https://guides.rubyonrails.org/configuring.html#database-pooling
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: stimulus_toolbox_development
+
+test:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: stimulus_toolbox_test
+
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: stimulus_toolbox_production
