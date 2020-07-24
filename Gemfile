@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.6"
 
+gem "administrate", "~> 0.14.0"
 gem "bg", "~> 0.0.5"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "hiredis", "~> 0.6.3", require: %w[redis redis/connection/hiredis]
