@@ -14,7 +14,7 @@
 #  index_full_text_searches_on_record_type_and_record_id  (record_type,record_id) UNIQUE
 #  index_full_text_searches_on_value                      (value) USING gin
 #
-require 'test_helper'
+require "test_helper"
 
 class FullTextSearchTest < ActiveSupport::TestCase
   # test "the truth" do

@@ -24,7 +24,7 @@
 #  index_projects_on_name  (name)
 #  index_projects_on_tags  (tags) USING gin
 #
-require 'test_helper'
+require "test_helper"
 
 class ProjectTest < ActiveSupport::TestCase
   # test "the truth" do
