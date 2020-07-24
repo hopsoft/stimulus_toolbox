@@ -3,9 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.6"
 
+gem "bg", "~> 0.0.5"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "hiredis", "~> 0.6.3", require: %w[redis redis/connection/hiredis]
 gem "jbuilder", "~> 2.7"
+gem "loofah", "~> 2.6"
+gem "octokit", "~> 4.18"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
@@ -20,11 +23,15 @@ gem "webpacker", "~> 5.1"
 # gem 'image_processing', '~> 1.2'
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "dotenv"
+  gem "awesome_print", "~> 1.8"
+  gem "dotenv-rails", "~> 2.7"
+  gem "pry-byebug", "~> 3.9"
+  gem "pry-doc", "~> 1.1"
+  gem "pry-rails", "~> 0.3.9"
 end
 
 group :development do
+  gem "annotate"
   gem "listen", "~> 3.2"
   gem "model_probe"
   gem "standardrb"
