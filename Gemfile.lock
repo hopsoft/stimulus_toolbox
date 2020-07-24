@@ -162,6 +162,7 @@ GEM
     octokit (4.18.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
+    pagy (3.8.3)
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
@@ -326,6 +327,7 @@ DEPENDENCIES
   loofah (~> 2.6)
   model_probe
   octokit (~> 4.18)
+  pagy (~> 3.8)
   pg (>= 0.18, < 2.0)
   pry-byebug (~> 3.9)
   pry-doc (~> 1.1)

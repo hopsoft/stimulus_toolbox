@@ -1,54 +1,17 @@
-<!-- This example requires Tailwind CSS v1.4.0+ -->
-<div class="relative bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-      <div class="lg:w-0 lg:flex-1">
-        <a href="#" class="flex">
-          <%= image_pack_tag "media/images/stimulus-logo.svg", alt: "Stimulus Toolbox", class: "h-8 w-auto sm:h-10" %>
-        </a>
-      </div>
-      <div class="-mr-2 -my-2 md:hidden">
-        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-      <nav class="hidden md:flex space-x-10">
-        <div class="relative">
-          <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
-          <button type="button" class="text-gray-500 group inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
-            <span>Solutions</span>
-            <!-- Item active: "text-gray-600", Item inactive: "text-gray-400" -->
-            <svg class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </button>
+<nav class="bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <%= image_pack_tag "media/images/stimulus-logo.svg", class: "block h-8 w-auto", alt: "Stimulus Toolbox" %>
         </div>
-
-        <a href="#" class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
-          Pricing
-        </a>
-        <a href="#" class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
-          Docs
-        </a>
-
-        <div class="relative">
-          <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
-          <button type="button" class="text-gray-500 inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
-            <span>More</span>
-            <!-- Item active: "text-gray-600", Item inactive: "text-gray-400" -->
-            <svg class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </button>
+        <div class="hidden sm:block sm:ml-6">
+          <div class="flex">
+            <%= link_to "Home", root_path, class: "px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-800 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
+            <%= link_to "Toolbox", projects_path, class: "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
+          </div>
         </div>
-      </nav>
-      <div class="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
-        <a href="#" class="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900">
-          Sign in
-        </a>
       </div>
     </div>
   </div>
-</div>
+</nav>

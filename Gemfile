@@ -10,6 +10,7 @@ gem "hiredis", "~> 0.6.3", require: %w[redis redis/connection/hiredis]
 gem "jbuilder", "~> 2.7"
 gem "loofah", "~> 2.6"
 gem "octokit", "~> 4.18"
+gem "pagy", "~> 3.8"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
