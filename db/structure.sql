@@ -64,19 +64,20 @@ CREATE TABLE public.projects (
     id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    forks_count integer DEFAULT 0 NOT NULL,
-    open_issues_count integer DEFAULT 0 NOT NULL,
-    stars_count integer DEFAULT 0 NOT NULL,
-    subscribers_count integer DEFAULT 0 NOT NULL,
-    archived boolean DEFAULT false NOT NULL,
-    disabled boolean DEFAULT false NOT NULL,
-    name text NOT NULL,
+    github_sychronized_at timestamp without time zone,
+    npm_sychronized_at timestamp without time zone,
+    human_name text NOT NULL,
+    github_name text,
+    npm_name text,
     description text,
     url text,
-    repo_url text NOT NULL,
+    github_url text,
+    npm_url text,
     license_name text,
     license_url text,
-    tags text[] DEFAULT '{}'::text[] NOT NULL
+    tags text[] DEFAULT '{}'::text[] NOT NULL,
+    github_data jsonb DEFAULT '"{}"'::jsonb NOT NULL,
+    npm_data jsonb DEFAULT '"{}"'::jsonb NOT NULL
 );
 
 
@@ -169,10 +170,38 @@ CREATE INDEX index_full_text_searches_on_value ON public.full_text_searches USIN
 
 
 --
--- Name: index_projects_on_name; Type: INDEX; Schema: public; Owner: -
+-- Name: index_projects_on_github_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_projects_on_name ON public.projects USING btree (name);
+CREATE UNIQUE INDEX index_projects_on_github_name ON public.projects USING btree (github_name);
+
+
+--
+-- Name: index_projects_on_github_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_projects_on_github_url ON public.projects USING btree (github_url);
+
+
+--
+-- Name: index_projects_on_human_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_projects_on_human_name ON public.projects USING btree (human_name);
+
+
+--
+-- Name: index_projects_on_npm_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_projects_on_npm_name ON public.projects USING btree (npm_name);
+
+
+--
+-- Name: index_projects_on_npm_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_projects_on_npm_url ON public.projects USING btree (npm_url);
 
 
 --
@@ -180,6 +209,13 @@ CREATE INDEX index_projects_on_name ON public.projects USING btree (name);
 --
 
 CREATE INDEX index_projects_on_tags ON public.projects USING gin (tags);
+
+
+--
+-- Name: index_projects_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_projects_on_url ON public.projects USING btree (url);
 
 
 --

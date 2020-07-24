@@ -2,14 +2,15 @@ module Githubable
   extend ActiveSupport::Concern
 
   included do
-    after_save -> { update_github_data }
+    after_save -> { defer.update_github_data }
   end
 
-  private
+  def update_github_data
+    return unless github_name.present?
+    return if github_sychronized_at.try(:advance, weeks: 1)&.after?(Time.current)
 
-  def upate_github_data
-    if sychronized_at.nil? || sychronized_at.advance(weeks: 1) <= Time.current
-      binding.pry
-    end
+    client ||= Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
+    repo = client.repo(github_name)
+    update_columns github_data: repo.to_h, github_sychronized_at: Time.current
   end
 end

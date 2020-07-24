@@ -27,7 +27,7 @@ module FullTextSearchable
   included do
     has_one :full_text_search, as: :record
     before_destroy :destroy_full_text_search
-    after_save -> { update_full_text_search }
+    after_save -> { defer.update_full_text_search }
   end
 
   delegate :ngrams, to: "self.class"
