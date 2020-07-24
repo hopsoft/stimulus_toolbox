@@ -7,8 +7,8 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <%= link_to "Home", root_path, class: "px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-800 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
-            <%= link_to "Toolbox", projects_path, class: "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
+            <%= link_to "Home", root_path, class: "#{"bg-gray-800" if controller_name == "home"} px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
+            <%= link_to "Toolbox", projects_path, class: "#{"bg-gray-800" if controller_name == "projects"} ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
           </div>
         </div>
       </div>
