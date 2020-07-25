@@ -12,7 +12,7 @@ class FullTextSearchDashboard < Administrate::BaseDashboard
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    value: Field::String.with_options(searchable: false),
+    value: Field::String.with_options(searchable: false)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -21,28 +21,28 @@ class FullTextSearchDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  record
-  id
-  created_at
-  updated_at
+    record
+    id
+    created_at
+    updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  record
-  id
-  created_at
-  updated_at
-  value
+    record
+    id
+    created_at
+    updated_at
+    value
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  record
-  value
+    record
+    value
   ].freeze
 
   # COLLECTION_FILTERS
