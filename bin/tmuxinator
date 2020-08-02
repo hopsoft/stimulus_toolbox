@@ -4,5 +4,5 @@
 tmux kill-session -t tmp
 tmux new -d -s tmp
 sleep 1 && tmux kill-session -t tmp &
-tmux kill-session -t stimulus_toolbox
+tmux kill-session -t "$(basename $(pwd))"
 tmuxinator start -p .tmuxinator.yml

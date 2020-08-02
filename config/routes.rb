@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: "projects#index"
   end
 
-  resources :projects, only: [:index, :show]
+  resources :projects, only: [:index, :show, :new, :create]
 
   get "home/index"
   root "home#index"

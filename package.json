@@ -6,6 +6,8 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.1.1",
+    "@tailwindcss/ui": "^0.5.0",
+    "debounced": "^0.0.5",
     "stimulus": "^1.1.1",
     "stimulus_reflex": "^3.3.0-pre2",
     "tailwindcss": "^1.5.2",

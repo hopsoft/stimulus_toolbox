@@ -1,0 +1,123 @@
+<%= form_with model: @project do |f| %>
+  <div class="bg-gray-50 border shadow px-4 py-5 sm:rounded-lg sm:p-6 mt-3">
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+      <div class="md:col-span-1">
+        <div class="sm:px-0">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">Basic Info <small><em class="text-red-600">*required</em></small></h3>
+          <div class="rounded-md bg-blue-50 border border-blue-200 p-3 mt-3">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3 flex-1 md:flex md:justify-between">
+                <p class="text-sm leading-5 text-blue-700">
+                  The project must be related to <a href="" class="underline">Stimulus</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-2">
+        <div class="border border-gray-300 shadow sm:rounded-md sm:overflow-hidden">
+          <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="sm:col-span-4">
+              <%= f.label :name, class: class_names("block text-sm font-medium leading-5 text-gray-700", "text-red-600": @project.attr_invalid?(:name)) do %>
+                Name <%= tag.small @project.errors[:name]&.first, class: "text-red-400" %>
+              <% end %>
+              <div class="mt-1 rounded-md shadow-sm">
+                <%= f.text_field :name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5",
+                  data: { reflex: "debounced:input" } %>
+              </div>
+            </div>
+            <div class="sm:col-span-4 mt-3">
+              <%= f.label :url, class: class_names("block text-sm font-medium leading-5 text-gray-700", "text-red-600": @project.attr_invalid?(:url)) do %>
+                URL <%= tag.small @project.errors[:url]&.first, class: "text-red-400" %>
+              <% end %>
+              <div class="mt-1 rounded-md shadow-sm">
+                <%= f.text_field :url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5",
+                  data: { reflex: "debounced:input" } %>
+              </div>
+            </div>
+            <div class="sm:col-span-4 mt-3">
+              <%= f.label :description, class: class_names("block text-sm font-medium leading-5 text-gray-700", "text-red-600": @project.attr_invalid?(:description)) do %>
+                Description <%= tag.small @project.errors[:description]&.first, class: "text-red-400" %>
+              <% end %>
+              <div class="mt-1 rounded-md shadow-sm">
+                <%= f.text_area :description, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5",
+                  data: { reflex: "debounced:input" } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:grid md:grid-cols-3 md:gap-6 mt-6">
+      <div class="md:col-span-1">
+        <div class="sm:px-0">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">GitHub Info</h3>
+        </div>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-2">
+        <div class="border border-gray-200 shadow-sm sm:rounded-md sm:overflow-hidden">
+          <div class="px-4 py-5 bg-gray-100 sm:p-6">
+            <div class="sm:col-span-4">
+              <%= f.label :github_name, class: "block text-sm font-medium leading-5 text-gray-700" do %>
+                GitHub Name <small class="text-gray-400">i.e. <code>hopsoft/stimulus_reflex</code></small>
+              <% end %>
+              <div class="mt-1 rounded-md shadow-sm">
+                <%= f.text_field :github_name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              </div>
+            </div>
+            <div class="sm:col-span-4 mt-3">
+              <%= f.label :github_url, "GitHub URL", class: "block text-sm font-medium leading-5 text-gray-700" %>
+              <div class="mt-1 rounded-md shadow-sm">
+                <%= f.text_field :github_url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:grid md:grid-cols-3 md:gap-6 mt-6">
+      <div class="md:col-span-1">
+        <div class="sm:px-0">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">NPM Info</h3>
+        </div>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-2">
+        <div class="border border-gray-200 shadow-sm sm:rounded-md sm:overflow-hidden">
+          <div class="px-4 py-5 bg-gray-100 sm:p-6">
+            <div class="sm:col-span-4">
+              <%= f.label :npm_name, "NPM Name", class: "block text-sm font-medium leading-5 text-gray-700" do %>
+                NPM Name <small class="text-gray-400">i.e. <code>stimulus_reflex</code></small>
+              <% end %>
+              <div class="mt-1 rounded-md shadow-sm">
+                <%= f.text_field :npm_name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              </div>
+            </div>
+            <div class="sm:col-span-4 mt-3">
+              <%= f.label :npm_url, "GitHub URL", class: "block text-sm font-medium leading-5 text-gray-700" %>
+              <div class="mt-1 rounded-md shadow-sm">
+                <%= f.text_field :npm_url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="inline-flex rounded-md shadow-sm mt-4">
+    <%= f.button disabled: @project.invalid?, class: class_names("inline-flex items-center pl-6 pr-4 py-3 border border-transparent text-base leading-6 font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150", "opacity-50": @project.invalid?) do %>
+      <%= @project.valid? ? "Submit" : "Awaiting valid data" %>
+      <svg class="ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+    <% end %>
+  </span>
+<% end %>

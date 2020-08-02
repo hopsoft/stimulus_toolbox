@@ -11,6 +11,8 @@ SET row_security = off;
 
 SET default_tablespace = '';
 
+SET default_table_access_method = heap;
+
 --
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
@@ -62,22 +64,21 @@ ALTER SEQUENCE public.full_text_searches_id_seq OWNED BY public.full_text_search
 
 CREATE TABLE public.projects (
     id bigint NOT NULL,
+    approved boolean DEFAULT false NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     github_sychronized_at timestamp without time zone,
     npm_sychronized_at timestamp without time zone,
-    human_name text NOT NULL,
+    name text NOT NULL,
     github_name text,
     npm_name text,
-    description text,
-    url text,
+    description text NOT NULL,
+    url text NOT NULL,
     github_url text,
     npm_url text,
-    license_name text,
-    license_url text,
     tags text[] DEFAULT '{}'::text[] NOT NULL,
-    github_data jsonb DEFAULT '"{}"'::jsonb NOT NULL,
-    npm_data jsonb DEFAULT '"{}"'::jsonb NOT NULL
+    github_data jsonb DEFAULT '{}'::jsonb NOT NULL,
+    npm_data jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
@@ -170,38 +171,45 @@ CREATE INDEX index_full_text_searches_on_value ON public.full_text_searches USIN
 
 
 --
--- Name: index_projects_on_github_name; Type: INDEX; Schema: public; Owner: -
+-- Name: index_projects_on_approved; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_projects_on_github_name ON public.projects USING btree (github_name);
+CREATE INDEX index_projects_on_approved ON public.projects USING btree (approved);
 
 
 --
 -- Name: index_projects_on_github_url; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_projects_on_github_url ON public.projects USING btree (github_url);
+CREATE UNIQUE INDEX index_projects_on_github_url ON public.projects USING btree (github_url) WHERE (github_url <> NULL::text);
 
 
 --
--- Name: index_projects_on_human_name; Type: INDEX; Schema: public; Owner: -
+-- Name: index_projects_on_lower_btrim_github_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_projects_on_human_name ON public.projects USING btree (human_name);
+CREATE UNIQUE INDEX index_projects_on_lower_btrim_github_name ON public.projects USING btree (lower(btrim(github_name))) WHERE (github_name <> NULL::text);
 
 
 --
--- Name: index_projects_on_npm_name; Type: INDEX; Schema: public; Owner: -
+-- Name: index_projects_on_lower_btrim_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_projects_on_npm_name ON public.projects USING btree (npm_name);
+CREATE UNIQUE INDEX index_projects_on_lower_btrim_name ON public.projects USING btree (lower(btrim(name)));
+
+
+--
+-- Name: index_projects_on_lower_btrim_npm_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_projects_on_lower_btrim_npm_name ON public.projects USING btree (lower(btrim(npm_name))) WHERE (npm_name <> NULL::text);
 
 
 --
 -- Name: index_projects_on_npm_url; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_projects_on_npm_url ON public.projects USING btree (npm_url);
+CREATE UNIQUE INDEX index_projects_on_npm_url ON public.projects USING btree (npm_url) WHERE (npm_url <> NULL::text);
 
 
 --

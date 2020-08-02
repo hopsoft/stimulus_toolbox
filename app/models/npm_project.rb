@@ -35,7 +35,7 @@ class NpmProject
     end
   end
 
-  def download_count
+  def downloads_count
     downloads_by_day.values.sum
   end
 end

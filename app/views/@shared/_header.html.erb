@@ -3,12 +3,67 @@
     <div class="flex items-center justify-between h-16">
       <div class="flex items-center">
         <div class="flex-shrink-0">
-          <%= image_pack_tag "media/images/stimulus-logo.svg", class: "block h-8 w-auto", alt: "Stimulus Toolbox" %>
+          <%= image_pack_tag "media/images/stimulus-logo.svg", class: "block", alt: "Stimulus Toolbox", style: "height:32px; width:32px;" %>
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <%= link_to "Home", root_path, class: "#{"bg-gray-800" if controller_name == "home"} px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
-            <%= link_to "Toolbox", projects_path, class: "#{"bg-gray-800" if controller_name == "projects"} ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" %>
+            <%= link_to "Home", root_path, class: class_names(
+              { "bg-gray-800": controller_name == "home" },
+              %w[
+                duration-150
+                ease-in-out
+                focus:bg-gray-700
+                focus:outline-none
+                focus:text-white
+                font-medium
+                leading-5
+                px-3
+                py-2
+                rounded-md
+                text-sm
+                text-white
+                transition
+              ].join(" ")) %>
+
+            <%= link_to "Toolbox", projects_path, class: class_names(
+              { "bg-gray-800": controller_name == "projects" && action_name == "index"},
+              <<~CSS
+                duration-150
+                ease-in-out
+                focus:bg-gray-700
+                focus:outline-none
+                focus:text-white
+                font-medium
+                leading-5
+                ml-4
+                px-3
+                py-2
+                rounded-md
+                text-sm
+                text-white
+                transition
+              CSS
+            ) %>
+
+          <%= link_to "Submit a Project", new_project_path, class: class_names(
+            { "bg-gray-800": controller_name == "projects" && action_name == "new" },
+            <<~CSS
+              duration-150
+              ease-in-out
+              focus:bg-gray-700
+              focus:outline-none
+              focus:text-white
+              font-medium
+              leading-5
+              ml-4
+              px-3
+              py-2
+              rounded-md
+              text-sm
+              text-indigo-300
+              transition
+            CSS
+          )%>
           </div>
         </div>
       </div>

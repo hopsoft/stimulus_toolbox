@@ -16,4 +16,7 @@ require('channels')
 // const imagePath = name => images(name, true)
 require.context('../images', true)
 
+import debounced from 'debounced'
+debounced.initialize()
+
 import 'controllers'

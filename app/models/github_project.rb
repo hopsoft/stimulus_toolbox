@@ -6,35 +6,35 @@ class GithubProject
   end
 
   def owner_name
-    data.dig("owner", "login")
+    data.dig("owner", "login").to_s
   end
 
   def owner_url
-    data.dig("owner", "html_url")
+    data.dig("owner", "html_url").to_s
   end
 
   def owner_avatar_url
-    data.dig("owner", "avatar_url")
+    data.dig("owner", "avatar_url").to_s
   end
 
   def description
-    data["description"]
+    data["description"].to_s
   end
 
   def url
-    data["html_url"]
+    data["html_url"].to_s
   end
 
   def homepage_url
-    data["homepage"]
+    data["homepage"].to_s
   end
 
   def license_name
-    data.dig("license", "name")
+    data.dig("license", "name").to_s
   end
 
   def license_url
-    data.dig("license", "url")
+    data.dig("license", "url").to_s
   end
 
   def forks_count

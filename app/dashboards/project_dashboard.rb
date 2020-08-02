@@ -8,24 +8,21 @@ class ProjectDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    full_text_search: Field::HasOne,
-    id: Field::Number,
+    approved: Field::Boolean,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    github_sychronized_at: Field::DateTime,
-    npm_sychronized_at: Field::DateTime,
-    human_name: Field::String,
-    github_name: Field::String,
-    npm_name: Field::String,
     description: Field::Text,
-    url: Field::String,
-    github_url: Field::String,
-    npm_url: Field::String,
-    license_name: Field::String,
-    license_url: Field::String,
-    tags: Field::Text.with_options(searchable: false),
+    full_text_search: Field::HasOne,
     github_data: Field::String.with_options(searchable: false),
-    npm_data: Field::String.with_options(searchable: false)
+    github_name: Field::String,
+    github_sychronized_at: Field::DateTime,
+    id: Field::Number,
+    name: Field::String,
+    npm_data: Field::String.with_options(searchable: false),
+    npm_name: Field::String,
+    npm_sychronized_at: Field::DateTime,
+    tags: Field::Text.with_options(searchable: false),
+    updated_at: Field::DateTime,
+    url: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -35,9 +32,10 @@ class ProjectDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    human_name
+    name
     github_name
     npm_name
+    approved
     created_at
     updated_at
   ].freeze
@@ -45,37 +43,33 @@ class ProjectDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    full_text_search
-    id
+    approved
     created_at
-    updated_at
-    github_sychronized_at
-    npm_sychronized_at
-    human_name
-    github_name
-    npm_name
     description
-    url
-    github_url
-    npm_url
-    license_name
-    license_url
-    tags
+    full_text_search
     github_data
+    github_name
+    github_sychronized_at
+    id
+    name
     npm_data
+    npm_name
+    npm_sychronized_at
+    tags
+    updated_at
+    url
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    human_name
+    name
     github_name
     npm_name
+    approved
     description
     url
-    github_url
-    npm_url
     tags
   ].freeze
 

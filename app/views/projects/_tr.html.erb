@@ -1,0 +1,33 @@
+<tr>
+  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+    <div class="flex items-center">
+      <div class="flex-shrink-0 h-10 w-10">
+        <%= link_to image_tag(project.github_project.owner_avatar_url, class: "h-10 w-10 rounded-full"), project.github_project.owner_url %>
+      </div>
+      <div class="ml-4">
+        <div class="text-sm leading-5 font-medium text-gray-900"><%= link_to project.github_project.owner_name.titleize, project.github_project.owner_url %></div>
+      </div>
+    </div>
+  </td>
+  <td class="text-sm leading-5 text-gray-900">
+    <%= link_to project.name, project.github_project.url %>
+    <div class="text-xs leading-none text-gray-500 w-64">
+      <%= project.description.truncate 64 %>
+    </div>
+  </td>
+  <td class="text-sm leading-5 text-gray-500">
+    <%= link_to project.github_project.license_name, project.github_project.license_url %>
+  </td>
+  <td class="text-sm leading-5 text-gray-900">
+    <%= number_with_delimiter project.github_project.stars_count %>
+  </td>
+  <td class="text-sm leading-5 text-gray-900">
+    <%= number_with_delimiter project.github_project.subscribers_count %>
+  </td>
+  <td class="text-sm leading-5 text-gray-900">
+    <%= number_with_delimiter project.github_project.forks_count %>
+  </td>
+  <td class="text-sm leading-5 text-gray-900">
+    <%= number_with_delimiter project.npm_project.downloads_count %>
+  </td>
+</tr>
