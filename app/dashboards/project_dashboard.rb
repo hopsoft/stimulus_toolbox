@@ -17,11 +17,13 @@ class ProjectDashboard < Administrate::BaseDashboard
     github_data: Field::String.with_options(searchable: false),
     github_name: Field::String,
     github_sychronized_at: Field::DateTime,
+    github_url: Field::String,
     id: Field::Number,
     name: Field::String,
     npm_data: Field::String.with_options(searchable: false),
     npm_name: Field::String,
     npm_sychronized_at: Field::DateTime,
+    npm_url: Field::String,
     tags: Field::Text.with_options(searchable: false),
     updated_at: Field::DateTime,
     url: Field::String
@@ -51,11 +53,13 @@ class ProjectDashboard < Administrate::BaseDashboard
     full_text_search
     github_data
     github_name
+    github_url
     github_sychronized_at
     id
     name
     npm_data
     npm_name
+    npm_url
     npm_sychronized_at
     tags
     updated_at
@@ -72,6 +76,8 @@ class ProjectDashboard < Administrate::BaseDashboard
     approved
     description
     url
+    gitub_url
+    npm_url
     tags
   ].freeze
 
