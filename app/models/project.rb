@@ -23,14 +23,10 @@
 #
 # Indexes
 #
-#  index_projects_on_approved                 (approved)
-#  index_projects_on_github_url               (github_url) UNIQUE WHERE (github_url <> NULL::text)
-#  index_projects_on_lower_btrim_github_name  (lower(btrim(github_name))) UNIQUE WHERE (github_name <> NULL::text)
-#  index_projects_on_lower_btrim_name         (lower(btrim(name))) UNIQUE
-#  index_projects_on_lower_btrim_npm_name     (lower(btrim(npm_name))) UNIQUE WHERE (npm_name <> NULL::text)
-#  index_projects_on_npm_url                  (npm_url) UNIQUE WHERE (npm_url <> NULL::text)
-#  index_projects_on_tags                     (tags) USING gin
-#  index_projects_on_url                      (url) UNIQUE
+#  index_projects_on_approved          (approved)
+#  index_projects_on_lower_btrim_name  (lower(btrim(name))) UNIQUE
+#  index_projects_on_tags              (tags) USING gin
+#  index_projects_on_url               (url) UNIQUE
 #
 class Project < ApplicationRecord
   # extends ...................................................................
@@ -45,11 +41,11 @@ class Project < ApplicationRecord
   # validations ...............................................................
   validates :name, uniqueness: {case_sensitive: false}, length: {minimum: 3}
   validates :description, length: {minimum: 36}
-  validates :github_name, uniqueness: {case_sensitive: false}, format: {with: /\A([^\/]+\/[^\/]+)(?!=\/)\z/}, length: {minimum: 3}, allow_blank: true
-  validates :npm_name, uniqueness: {case_sensitive: false}, length: {minimum: 1}, allow_blank: true
+  validates :github_name, format: {with: /\A([^\/]+\/[^\/]+)(?!=\/)\z/}, length: {minimum: 3}, allow_blank: true
+  validates :npm_name, length: {minimum: 1}, allow_blank: true
   validates :url, url: true, uniqueness: true, presence: true
-  validates :github_url, url: true, uniqueness: true, format: {with: /\Ahttps:\/\/github\.com\/[^\/]+\/[^\/]+/}, allow_blank: true
-  validates :npm_url, url: true, uniqueness: true, format: {with: /\Ahttps:\/\/www\.npmjs\.com\/package\/.+/}, allow_blank: true
+  validates :github_url, url: true, format: {with: /\Ahttps:\/\/github\.com\/[^\/]+\/[^\/]+/}, allow_blank: true
+  validates :npm_url, url: true, format: {with: /\Ahttps:\/\/www\.npmjs\.com\/package\/.+/}, allow_blank: true
 
   # callbacks .................................................................
   after_save -> { defer.update_full_text_search }, if: :approved?

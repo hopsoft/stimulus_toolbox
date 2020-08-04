@@ -178,38 +178,10 @@ CREATE INDEX index_projects_on_approved ON public.projects USING btree (approved
 
 
 --
--- Name: index_projects_on_github_url; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_projects_on_github_url ON public.projects USING btree (github_url) WHERE (github_url <> NULL::text);
-
-
---
--- Name: index_projects_on_lower_btrim_github_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_projects_on_lower_btrim_github_name ON public.projects USING btree (lower(btrim(github_name))) WHERE (github_name <> NULL::text);
-
-
---
 -- Name: index_projects_on_lower_btrim_name; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_projects_on_lower_btrim_name ON public.projects USING btree (lower(btrim(name)));
-
-
---
--- Name: index_projects_on_lower_btrim_npm_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_projects_on_lower_btrim_npm_name ON public.projects USING btree (lower(btrim(npm_name))) WHERE (npm_name <> NULL::text);
-
-
---
--- Name: index_projects_on_npm_url; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_projects_on_npm_url ON public.projects USING btree (npm_url) WHERE (npm_url <> NULL::text);
 
 
 --
@@ -234,6 +206,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20200724002532'),
-('20200724034425');
+('20200724034425'),
+('20200804205106');
 
 

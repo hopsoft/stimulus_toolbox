@@ -23,14 +23,10 @@
 #
 # Indexes
 #
-#  index_projects_on_approved                 (approved)
-#  index_projects_on_github_url               (github_url) UNIQUE WHERE (github_url <> NULL::text)
-#  index_projects_on_lower_btrim_github_name  (lower(btrim(github_name))) UNIQUE WHERE (github_name <> NULL::text)
-#  index_projects_on_lower_btrim_name         (lower(btrim(name))) UNIQUE
-#  index_projects_on_lower_btrim_npm_name     (lower(btrim(npm_name))) UNIQUE WHERE (npm_name <> NULL::text)
-#  index_projects_on_npm_url                  (npm_url) UNIQUE WHERE (npm_url <> NULL::text)
-#  index_projects_on_tags                     (tags) USING gin
-#  index_projects_on_url                      (url) UNIQUE
+#  index_projects_on_approved          (approved)
+#  index_projects_on_lower_btrim_name  (lower(btrim(name))) UNIQUE
+#  index_projects_on_tags              (tags) USING gin
+#  index_projects_on_url               (url) UNIQUE
 #
 require "test_helper"
 
