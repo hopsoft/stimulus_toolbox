@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   namespace :admin do
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [:index, :show, :new, :create]
+  get "projects/page/:page/(query/:query)", to: "projects#index", as: :paginated_projects
 
   get "home/index"
   root "home#index"

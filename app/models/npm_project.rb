@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NpmProject
   attr_reader :data
 

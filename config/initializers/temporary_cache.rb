@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def Rails.temporary_cache
   @temporary_cache ||= if Rails.env.test?
     ActiveSupport::Cache::NullStore.new

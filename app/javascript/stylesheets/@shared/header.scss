@@ -1,0 +1,18 @@
+.shared-header-link {
+  @apply duration-150;
+  @apply ease-in-out;
+  @apply font-medium;
+  @apply leading-5;
+  @apply px-3;
+  @apply py-2;
+  @apply rounded-md;
+  @apply text-sm;
+  @apply text-white;
+  @apply transition;
+
+  &:focus {
+    @apply bg-gray-700;
+    @apply outline-none;
+    @apply text-white;
+  }
+}

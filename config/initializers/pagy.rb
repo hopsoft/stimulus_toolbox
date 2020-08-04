@@ -104,7 +104,7 @@ require "pagy/extras/navs"
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
 # Pagy::VARS[:items] = 20                                   # default
-Pagy::VARS[:items] = 10
+Pagy::VARS[:items] = 2
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables

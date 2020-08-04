@@ -52,7 +52,7 @@
                 GitHub Name <%= tag.small @project.errors[:github_name]&.first, class: "text-red-400" %>
               <% end %>
               <div class="mt-1 rounded-md shadow-sm">
-                <%= f.text_field :github_name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input" } %>
+                <%= f.text_field :github_name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input->ProjectForm#assign_github_url" } %>
               </div>
             </div>
             <div class="sm:col-span-4 mt-3">
@@ -60,7 +60,7 @@
                 GitHub URL <%= tag.small @project.errors[:github_url]&.first, class: "text-red-400" %>
               <% end %>
               <div class="mt-1 rounded-md shadow-sm">
-                <%= f.text_field :github_url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input" } %>
+                <%= f.text_field :github_url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input->ProjectForm#assign_github_name" } %>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
                 NPM Name <%= tag.small @project.errors[:npm_name]&.first, class: "text-red-400" %>
               <% end %>
               <div class="mt-1 rounded-md shadow-sm">
-                <%= f.text_field :npm_name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input" } %>
+                <%= f.text_field :npm_name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input->ProjectForm#assign_npm_url" } %>
               </div>
             </div>
             <div class="sm:col-span-4 mt-3">
@@ -90,7 +90,7 @@
                 NPM URL <%= tag.small @project.errors[:npm_url]&.first, class: "text-red-400" %>
               <% end %>
               <div class="mt-1 rounded-md shadow-sm">
-                <%= f.text_field :npm_url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input" } %>
+                <%= f.text_field :npm_url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: { reflex: "debounced:input->ProjectForm#assign_npm_name" } %>
               </div>
             </div>
           </div>

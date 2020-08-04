@@ -7,63 +7,9 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <%= link_to "Home", root_path, class: class_names(
-              { "bg-gray-800": controller_name == "home" },
-              %w[
-                duration-150
-                ease-in-out
-                focus:bg-gray-700
-                focus:outline-none
-                focus:text-white
-                font-medium
-                leading-5
-                px-3
-                py-2
-                rounded-md
-                text-sm
-                text-white
-                transition
-              ].join(" ")) %>
-
-            <%= link_to "Toolbox", projects_path, class: class_names(
-              { "bg-gray-800": controller_name == "projects" && action_name == "index"},
-              <<~CSS
-                duration-150
-                ease-in-out
-                focus:bg-gray-700
-                focus:outline-none
-                focus:text-white
-                font-medium
-                leading-5
-                ml-4
-                px-3
-                py-2
-                rounded-md
-                text-sm
-                text-white
-                transition
-              CSS
-            ) %>
-
-          <%= link_to "Submit a Project", new_project_path, class: class_names(
-            { "bg-gray-800": controller_name == "projects" && action_name == "new" },
-            <<~CSS
-              duration-150
-              ease-in-out
-              focus:bg-gray-700
-              focus:outline-none
-              focus:text-white
-              font-medium
-              leading-5
-              ml-4
-              px-3
-              py-2
-              rounded-md
-              text-sm
-              text-indigo-300
-              transition
-            CSS
-          )%>
+            <%= link_to "Home", root_path, class: class_names("shared-header-link", "bg-gray-800": controller_name == "home") %>
+            <%= link_to "Toolbox", paginated_projects_path(page: 1), class: class_names("shared-header-link", "bg-gray-800": controller_name == "projects" && action_name == "index") %>
+            <%= link_to "Submit a Project", new_project_path, class: class_names("shared-header-link text-indigo-300", "bg-gray-800": controller_name == "projects" && action_name == "new") %>
           </div>
         </div>
       </div>

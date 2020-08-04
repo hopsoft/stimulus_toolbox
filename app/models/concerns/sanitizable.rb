@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sanitizable
   extend ActiveSupport::Concern
 

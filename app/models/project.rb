@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: projects
@@ -43,11 +45,11 @@ class Project < ApplicationRecord
   # validations ...............................................................
   validates :name, uniqueness: {case_sensitive: false}, length: {minimum: 3}
   validates :description, length: {minimum: 36}
-  validates :github_name, uniqueness: {case_sensitive: false}, length: {minimum: 3}, allow_blank: true
-  validates :npm_name, uniqueness: {case_sensitive: false}, length: {minimum: 3}, allow_blank: true
+  validates :github_name, uniqueness: {case_sensitive: false}, format: {with: /\A([^\/]+\/[^\/]+)(?!=\/)\z/}, length: {minimum: 3}, allow_blank: true
+  validates :npm_name, uniqueness: {case_sensitive: false}, length: {minimum: 1}, allow_blank: true
   validates :url, url: true, uniqueness: true, presence: true
-  validates :github_url, url: true, uniqueness: true, allow_blank: true
-  validates :npm_url, url: true, uniqueness: true, allow_blank: true
+  validates :github_url, url: true, uniqueness: true, format: {with: /\Ahttps:\/\/github\.com\/[^\/]+\/[^\/]+/}, allow_blank: true
+  validates :npm_url, url: true, uniqueness: true, format: {with: /\Ahttps:\/\/www\.npmjs\.com\/package\/.+/}, allow_blank: true
 
   # callbacks .................................................................
   after_save -> { defer.update_full_text_search }, if: :approved?

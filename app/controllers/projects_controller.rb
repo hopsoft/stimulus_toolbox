@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
   include Pagy::Backend
+  include PublicProjectParams
 
   def index
     projects = Project.approved.order(:name)
@@ -7,8 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new(public_project_params)
-    @project.validate
+    @project ||= Project.new(public_project_params).tap(&:validate)
   end
 
   def create
@@ -19,20 +21,5 @@ class ProjectsController < ApplicationController
       flash[:error] = "An error occurred when saving your project! Please try again."
     end
     redirect_to new_project_path
-  end
-
-  private
-
-  def public_project_params
-    return ActionController::Parameters.new unless params.has_key?(:project)
-    params.require(:project).permit(
-      :name,
-      :url,
-      :description,
-      :github_name,
-      :github_url,
-      :npm_name,
-      :npm_url
-    )
   end
 end

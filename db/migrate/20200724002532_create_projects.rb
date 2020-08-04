@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateProjects < ActiveRecord::Migration[6.0]
   def change
     # column order optimized based on: https://gist.github.com/hopsoft/480fb99187cee3de51d521ee1bd264ff
