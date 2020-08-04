@@ -25,4 +25,9 @@ module ApplicationHelper
   def next_page
     @pagy.next || @pagy.last
   end
+
+  def human_count(value)
+    return "-" if value.to_i == 0
+    number_with_delimiter value
+  end
 end

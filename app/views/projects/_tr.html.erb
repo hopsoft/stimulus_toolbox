@@ -19,15 +19,15 @@
     <%= link_to full_text_search_result.record.github_project.license_name, full_text_search_result.record.github_project.license_url %>
   </td>
   <td class="text-sm leading-5 text-gray-900">
-    <%= number_with_delimiter full_text_search_result.record.github_project.stars_count %>
+    <%= human_count full_text_search_result.record.github_project.stars_count %>
   </td>
   <td class="text-sm leading-5 text-gray-900">
-    <%= number_with_delimiter full_text_search_result.record.github_project.subscribers_count %>
+    <%= human_count full_text_search_result.record.github_project.subscribers_count %>
   </td>
   <td class="text-sm leading-5 text-gray-900">
-    <%= number_with_delimiter full_text_search_result.record.github_project.forks_count %>
+    <%= human_count full_text_search_result.record.github_project.forks_count %>
   </td>
   <td class="text-sm leading-5 text-gray-900">
-    <%= number_with_delimiter full_text_search_result.record.npm_project.downloads_count %>
+    <%= human_count full_text_search_result.record.npm_project.downloads_count %>
   </td>
 </tr>
