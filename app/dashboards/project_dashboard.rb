@@ -76,7 +76,7 @@ class ProjectDashboard < Administrate::BaseDashboard
     approved
     description
     url
-    gitub_url
+    github_url
     npm_url
     tags
   ].freeze
