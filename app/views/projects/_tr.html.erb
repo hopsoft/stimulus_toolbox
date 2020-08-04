@@ -2,7 +2,9 @@
   <td class="px-6 py-4 whitespace-no-wrap">
     <div class="flex items-center">
       <div class="flex-shrink-0 h-10 w-10">
-        <%= link_to image_tag(full_text_search_result.record.github_project.owner_avatar_url, class: "h-10 w-10 rounded-full"), full_text_search_result.record.github_project.owner_url %>
+        <% if full_text_search_result.record.github_project.owner_avatar_url.present? %>
+          <%= link_to image_tag(full_text_search_result.record.github_project.owner_avatar_url, class: "h-10 w-10 rounded-full"), full_text_search_result.record.github_project.owner_url %>
+        <% end %>
       </div>
       <div class="ml-4">
         <div class="text-sm leading-5 font-medium text-gray-900"><%= link_to full_text_search_result.record.github_project.owner_name.titleize, full_text_search_result.record.github_project.owner_url %></div>
@@ -10,7 +12,7 @@
     </div>
   </td>
   <td class="text-sm leading-5 text-gray-900">
-    <%= link_to full_text_search_result.record.name, full_text_search_result.record.github_project.url %>
+    <%= link_to full_text_search_result.record.name, full_text_search_result.record.url %>
     <div class="text-xs leading-none text-gray-500 w-64">
       <%= full_text_search_result.record.description.truncate 64 %>
     </div>
