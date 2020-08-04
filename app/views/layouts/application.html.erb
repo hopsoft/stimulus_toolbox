@@ -6,12 +6,15 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>html { height: 100%; width: 100% }</style>
   </head>
 
-  <body>
+  <body class="flex flex-col flex-nowrap h-full w-full">
     <%= render "/@shared/header" %>
     <%= render "/@shared/flash" if flash.present? %>
-    <%= yield %>
+    <div class="flex-grow">
+      <%= yield %>
+    </div>
     <%= render "/@shared/footer" %>
   </body>
 </html>
