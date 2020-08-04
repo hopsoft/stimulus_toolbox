@@ -70,10 +70,10 @@ class ProjectDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    approved
     name
     github_name
     npm_name
-    approved
     description
     url
     github_url
