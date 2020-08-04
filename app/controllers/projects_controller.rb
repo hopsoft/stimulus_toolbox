@@ -5,8 +5,8 @@ class ProjectsController < ApplicationController
   include PublicProjectParams
 
   def index
-    projects = Project.approved.order(:name)
-    @pagy, @projects = pagy(projects)
+    full_text_search_results = Project.full_text_search_relation(params[:query].to_s)
+    @pagy, @full_text_search_results = pagy(full_text_search_results)
   end
 
   def new

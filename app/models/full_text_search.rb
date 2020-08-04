@@ -27,6 +27,7 @@ class FullTextSearch < ApplicationRecord
   # callbacks .................................................................
 
   # scopes ....................................................................
+
   scope :matched, ->(value) {
     value = value.to_s.gsub(/\W/, " ").squeeze(" ").downcase.strip
     value.blank? ? all : begin

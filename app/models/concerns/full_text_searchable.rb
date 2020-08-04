@@ -4,7 +4,11 @@ module FullTextSearchable
   extend ActiveSupport::Concern
 
   class_methods do
-    def ngrams(value, min: 2, max: 6)
+    def full_text_search_relation(query)
+      FullTextSearch.includes(:record).where(record_type: name).matched_and_ranked(query)
+    end
+
+    def ngrams(value, min: 1, max: 24)
       value = value.to_s
       [].tap do |result|
         (min..max).each do |num|
@@ -19,8 +23,8 @@ module FullTextSearchable
 
     def fts_string(value)
       value = fts_words(value).join(" ")
-      value = value.chop while value.bytes.size > 2046
-      value
+      value = value.chop while value.bytes.size > 4096
+      value.strip
     end
   end
 
@@ -36,7 +40,7 @@ module FullTextSearchable
   def update_full_text_search
     tsvectors = to_tsvectors.compact.uniq
     return if tsvectors.blank?
-    tsvectors.pop while tsvectors.size > 500
+    tsvectors.pop while tsvectors.size > 1000
     tsvectors.concat similarity_words_tsvectors
     tsvector = tsvectors.join(" || ")
     fts = FullTextSearch.where(record: self).first_or_create
@@ -72,7 +76,7 @@ module FullTextSearchable
   protected
 
   def make_tsvector(value, weight: "D")
-    value = fts_string(value).gsub(/\W/, " ").squeeze.downcase
+    value = fts_string(value)
     return nil if value.blank?
     to_tsv = Arel::Nodes::NamedFunction.new("to_tsvector", [
       Arel::Nodes::SqlLiteral.new("'english'"),

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :show, :new, :create]
   get "projects/page/:page/(query/:query)", to: "projects#index", as: :paginated_projects
+  get "projects/page/:page/query", to: redirect("/projects/page/1")
 
   get "home/index"
   root "home#index"

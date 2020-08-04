@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody class="bg-white">
-          <%= render partial: "/projects/tr", collection: @projects, as: :project %>
+          <%= render partial: "/projects/tr", collection: @full_text_search_results, as: :full_text_search_result %>
         </tbody>
       </table>
     </div>
