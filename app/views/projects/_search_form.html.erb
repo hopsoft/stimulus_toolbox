@@ -1,4 +1,4 @@
-<div class="flex" data-controller="project-search-form">
+<div class="flex">
   <input id="search" placeholder="Find a Stimulus project..." value="<%= params[:query].to_s.strip %>" class="flex-grow border rounded-md p-2" autofocus
     data-target="project-search-form.query" data-reflex="debounced:input->ProjectSearchForm#search">
 </div>
