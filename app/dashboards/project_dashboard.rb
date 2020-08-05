@@ -16,13 +16,13 @@ class ProjectDashboard < Administrate::BaseDashboard
     full_text_search: Field::HasOne,
     github_data: Field::String.with_options(searchable: false),
     github_name: Field::String,
-    github_sychronized_at: Field::DateTime,
+    github_synchronized_at: Field::DateTime,
     github_url: Field::String,
     id: Field::Number,
     name: Field::String,
     npm_data: Field::String.with_options(searchable: false),
     npm_name: Field::String,
-    npm_sychronized_at: Field::DateTime,
+    npm_synchronized_at: Field::DateTime,
     npm_url: Field::String,
     tags: Field::Text.with_options(searchable: false),
     updated_at: Field::DateTime,
@@ -54,13 +54,13 @@ class ProjectDashboard < Administrate::BaseDashboard
     github_data
     github_name
     github_url
-    github_sychronized_at
+    github_synchronized_at
     id
     name
     npm_data
     npm_name
     npm_url
-    npm_sychronized_at
+    npm_synchronized_at
     tags
     updated_at
     url

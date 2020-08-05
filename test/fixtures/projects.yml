@@ -2,22 +2,22 @@
 #
 # Table name: projects
 #
-#  id                    :bigint           not null, primary key
-#  approved              :boolean          default(FALSE), not null
-#  description           :text             not null
-#  github_data           :jsonb            not null
-#  github_name           :text
-#  github_sychronized_at :datetime
-#  github_url            :text
-#  name                  :text             not null
-#  npm_data              :jsonb            not null
-#  npm_name              :text
-#  npm_sychronized_at    :datetime
-#  npm_url               :text
-#  tags                  :text             default([]), not null, is an Array
-#  url                   :text             not null
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
+#  id                     :bigint           not null, primary key
+#  approved               :boolean          default(FALSE), not null
+#  description            :text             not null
+#  github_data            :jsonb            not null
+#  github_name            :text
+#  github_synchronized_at :datetime
+#  github_url             :text
+#  name                   :text             not null
+#  npm_data               :jsonb            not null
+#  npm_name               :text
+#  npm_synchronized_at    :datetime
+#  npm_url                :text
+#  tags                   :text             default([]), not null, is an Array
+#  url                    :text             not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #

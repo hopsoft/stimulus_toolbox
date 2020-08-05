@@ -67,8 +67,8 @@ CREATE TABLE public.projects (
     approved boolean DEFAULT false NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    github_sychronized_at timestamp without time zone,
-    npm_sychronized_at timestamp without time zone,
+    github_synchronized_at timestamp without time zone,
+    npm_synchronized_at timestamp without time zone,
     name text NOT NULL,
     github_name text,
     npm_name text,
@@ -207,6 +207,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20200724002532'),
 ('20200724034425'),
-('20200804205106');
+('20200804205106'),
+('20200805031627');
 
 
