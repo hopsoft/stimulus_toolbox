@@ -20,3 +20,9 @@ import debounced from 'debounced'
 debounced.initialize()
 
 import 'controllers'
+
+document.addEventListener('stimulus-toolbox:set-location', event => {
+  const { path } = event.detail
+  if (path === location.pathname) return
+  history.pushState({}, '', path)
+})
