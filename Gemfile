@@ -10,7 +10,7 @@ gem "bg", "~> 0.0.5"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "hiredis", "~> 0.6.3", require: %w[redis redis/connection/hiredis]
 gem "jbuilder", "~> 2.7"
-gem "loofah", "~> 2.6"
+gem "loofah", "~> 2.19"
 gem "octokit", "~> 4.18"
 gem "pagy", "~> 3.8"
 gem "pg", ">= 0.18", "< 2.0"
